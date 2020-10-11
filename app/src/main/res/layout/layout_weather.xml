@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dp_8"
+    app:cardCornerRadius="@dimen/dp_8"
+    app:cardElevation="@dimen/dp_4"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clWeatherDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:padding="@dimen/dp_8"
+        android:visibility="gone">
+
+        <include
+            android:id="@+id/pbWeather"
+            layout="@layout/loading_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvCityName"
+            android:layout_marginLeft="@dimen/dp_8"
+            tools:text="Salem"
+            style="@style/TextBoldWhite20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+        <ImageView
+            android:id="@+id/ivWeather"
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_80"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCityName" />
+
+        <TextView
+            android:id="@+id/tvWeatherDesc"
+            style="@style/TextWhite16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivWeather"
+            tools:text="@string/dummy_text" />
+
+        <TextView
+            android:id="@+id/tvCurrentTemp"
+            style="@style/TextWhite40"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginRight="@dimen/dp_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/ivWeather"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/dummy_number" />
+
+        <TextView
+            android:id="@+id/tvFeelsLikeTemp"
+            style="@style/TextWhite16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dp_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/ivWeather"
+            app:layout_constraintTop_toBottomOf="@id/tvCurrentTemp"
+            tools:text="@string/dummy_text" />
+
+        <TextView
+            android:id="@+id/tvMinAndMaxTemp"
+            style="@style/TextNormalWhite14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dp_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/ivWeather"
+            app:layout_constraintTop_toBottomOf="@id/tvFeelsLikeTemp"
+            tools:text="@string/dummy_text" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clLocationError"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:padding="@dimen/dp_8"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tvWeatherError"
+            style="@style/TextBoldWhite14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_8"
+            android:padding="@dimen/dp_4"
+            android:text="@string/weather_error_msg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

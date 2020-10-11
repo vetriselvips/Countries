@@ -1,0 +1,83 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="SplashScreenTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_theme</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+    <item name="android:editTextColor">@color/colorSecondaryText</item>
+    <item name="android:textColorHint">@color/colorSecondaryText</item>
+    <item name="android:textColor">@color/colorSecondaryText</item>
+
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+
+    <style name="TextSecondaryText12" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@color/colorSecondaryText</item>
+        <item name="android:textSize">@dimen/sp_12</item>
+    </style>
+
+    <style name="TextBoldWhite14" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextBoldPrimaryText14" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextNormalPrimaryDark14" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+    </style>
+
+    <style name="TextNormalWhite14" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+    </style>
+
+    <style name="TextWhite16" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+    </style>
+
+    <style name="TextBoldBlack16" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextBoldWhite20" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/sp_20</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextNormal20" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textSize">@dimen/sp_20</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextPrimaryText20" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textSize">@dimen/sp_20</item>
+    </style>
+
+    <style name="TextWhite40" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/sp_40</item>
+    </style>
+
+</resources>

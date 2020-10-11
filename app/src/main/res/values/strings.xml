@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Countries</string>
+    <string name="dummy_text">New Delhi</string>
+    <string name="dummy_text_region">Asia / Southern Asia</string>
+    <string name="dummy_number">12</string>
+    <string name="dummy_numbers">1295210000</string>
+    <string name="capital">Capital</string>
+    <string name="currency">Currency</string>
+    <string name="region_and_sub_region">Region / SubRegion</string>
+    <string name="population">Population</string>
+    <string name="timezone">Time Zone</string>
+    <string name="no_item_found">No item found</string>
+    <string name="all_countries">All Countries</string>
+    <string name="network_call_failed">Network Call Failed</string>
+    <string name="askLocationAlertTitle">Use Location?</string>
+    <string name="askLocationAlertMsg">This app wants to use location permission to show weather details.\nDo you want to proceed?</string>
+    <string name="yes">Yes</string>
+    <string name="not_now">Not now</string>
+    <string name="min">Min</string>
+    <string name="max">Max</string>
+    <string name="feels_like">Feels Like</string>
+    <string name="search_country">Search</string>
+    <string name="no_internet">Please check your internet connection.</string>
+    <string name="no_location">Unable to fetch Current location. Showing default data.</string>
+    <string name="gpsDeniedToast">Location Permission denied. Unable to fetch current weather</string>
+    <string name="weather_error_msg">Unable to fetch the Location. Please turn on GPS (location services) for better experience.</string>
+    <string name="permission_denied_msg">Unable to fetch the Location. Please allow Location permission in Settings for better experience.</string>
+</resources>
