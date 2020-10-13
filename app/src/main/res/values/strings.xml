@@ -25,4 +25,8 @@
     <string name="gpsDeniedToast">Location Permission denied. Unable to fetch current weather</string>
     <string name="weather_error_msg">Unable to fetch the Location. Please turn on GPS (location services) for better experience.</string>
     <string name="permission_denied_msg">Unable to fetch the Location. Please allow Location permission in Settings for better experience.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="gps_no_thanks">Gps No Thanks</string>
+    <string name="weather_api_called">Weather Api Called</string>
 </resources>

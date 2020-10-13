@@ -80,4 +80,8 @@
         <item name="android:textSize">@dimen/sp_40</item>
     </style>
 
+    <style name="permissionAlertDialog" parent="Theme.AppCompat.Dialog">
+
+    </style>
+
 </resources>

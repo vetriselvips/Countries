@@ -1,5 +1,6 @@
 package com.example.countries.landingscreen.adapter
 
+import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,15 +9,13 @@ import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.ahmadrosid.svgloader.SvgLoader
 import com.example.countries.R
-import com.example.countries.landingscreen.activity.CountryListActivity
 import com.example.countries.landingscreen.listener.CountryItemClickListener
 import com.example.countries.landingscreen.model.country.CountryDetailsResp
 import kotlinx.android.synthetic.main.item_countrylist.view.*
 
 class CountryListAdapter(
     val countryListModel: ArrayList<CountryDetailsResp>,
-    val countryItemClick: CountryItemClickListener,
-    val activityContext: CountryListActivity
+    val countryItemClick: CountryItemClickListener
 ) : RecyclerView.Adapter<CountryListAdapter.CountryListViewHolder>(), Filterable {
     var filteredCountryList: ArrayList<CountryDetailsResp>
 
@@ -52,7 +51,7 @@ class CountryListAdapter(
         fun bind(model: CountryDetailsResp) = with(itemView) {
             itemView.tvCountryName.text = model.name
             SvgLoader.pluck()
-                .with(activityContext)
+                .with(context as Activity?)
                 .setPlaceHolder(
                     R.drawable.ic_no_image_placeholder,
                     R.drawable.ic_no_image_placeholder

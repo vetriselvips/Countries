@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".landingscreen.fragments.CountryDetailFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingBottom="@dimen/dp_10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivFlag"
+                android:layout_width="@dimen/dp_200"
+                android:layout_height="@dimen/dp_150"
+                android:layout_marginTop="@dimen/dp_10"
+                android:src="@drawable/ic_globe"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:elevation="@dimen/dp_4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivFlag">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_16"
+                    android:layout_marginBottom="@dimen/dp_10">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clCountryCapital"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivCountryCapital"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:layout_marginRight="@dimen/dp_6"
+                            android:src="@drawable/ic_capital_24"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tvCountryCapital"
+                            style="@style/TextBoldPrimaryText14"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_4"
+                            android:layout_marginTop="@dimen/dp_10"
+                            app:layout_constraintLeft_toRightOf="@id/ivCountryCapital"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="@string/dummy_text" />
+
+                        <TextView
+                            android:id="@+id/tvCountryCapitalTitle"
+                            style="@style/TextSecondaryText12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_4"
+                            android:layout_marginTop="@dimen/dp_4"
+                            android:layout_marginBottom="@dimen/dp_4"
+                            android:text="@string/capital"
+                            app:layout_constraintLeft_toRightOf="@id/ivCountryCapital"
+                            app:layout_constraintTop_toBottomOf="@id/tvCountryCapital" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clCountryCurrency"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/clCountryCapital">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivCountryCurrency"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:layout_marginRight="@dimen/dp_6"
+                            android:src="@drawable/ic_currency_24"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tvCountryCurrency"
+                            style="@style/TextBoldPrimaryText14"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_4"
+                            android:layout_marginTop="@dimen/dp_10"
+                            app:layout_constraintLeft_toRightOf="@id/ivCountryCurrency"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="@string/dummy_text" />
+
+                        <TextView
+                            android:id="@+id/tvCountryCurrencyTitle"
+                            style="@style/TextSecondaryText12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_4"
+                            android:layout_marginTop="@dimen/dp_4"
+                            android:layout_marginBottom="@dimen/dp_4"
+                            android:text="@string/currency"
+                            app:layout_constraintLeft_toRightOf="@id/ivCountryCurrency"
+                            app:layout_constraintTop_toBottomOf="@id/tvCountryCurrency" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clCountryRegion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/clCountryCurrency">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivCountryRegion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:layout_marginRight="@dimen/dp_6"
+                            android:src="@drawable/ic_location_24"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tvCountryRegion"
+                            style="@style/TextBoldPrimaryText14"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_4"
+                            android:layout_marginTop="@dimen/dp_10"
+                            app:layout_constraintLeft_toRightOf="@id/ivCountryRegion"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="@string/dummy_text_region" />
+
+                        <TextView
+                            android:id="@+id/tvCountryRegionTitle"
+                            style="@style/TextSecondaryText12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_4"
+                            android:layout_marginTop="@dimen/dp_4"
+                            android:layout_marginBottom="@dimen/dp_4"
+                            android:text="@string/region_and_sub_region"
+                            app:layout_constraintLeft_toRightOf="@id/ivCountryRegion"
+                            app:layout_constraintTop_toBottomOf="@id/tvCountryRegion" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clCountryPopulation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/clCountryRegion">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivCountryPopulation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:layout_marginRight="@dimen/dp_6"
+                            android:src="@drawable/ic_population_24"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tvCountryPopulation"
+                            style="@style/TextBoldPrimaryText14"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_4"
+                            android:layout_marginTop="@dimen/dp_10"
+                            app:layout_constraintLeft_toRightOf="@id/ivCountryPopulation"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="@string/dummy_numbers" />
+
+                        <TextView
+                            android:id="@+id/tvCountryPopulationTitle"
+                            style="@style/TextSecondaryText12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_4"
+                            android:layout_marginTop="@dimen/dp_4"
+                            android:layout_marginBottom="@dimen/dp_4"
+                            android:text="@string/population"
+                            app:layout_constraintLeft_toRightOf="@id/ivCountryPopulation"
+                            app:layout_constraintTop_toBottomOf="@id/tvCountryPopulation" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clCountryTimeZone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/clCountryPopulation">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivCountryTimeZone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:layout_marginRight="@dimen/dp_6"
+                            android:src="@drawable/ic_time_zone_24"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tvCountryTimeZone"
+                            style="@style/TextBoldPrimaryText14"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_4"
+                            android:layout_marginTop="@dimen/dp_10"
+                            app:layout_constraintLeft_toRightOf="@id/ivCountryTimeZone"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="@string/dummy_text" />
+
+                        <TextView
+                            android:id="@+id/tvCountryTimeZoneTitle"
+                            style="@style/TextSecondaryText12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_4"
+                            android:layout_marginTop="@dimen/dp_4"
+                            android:layout_marginBottom="@dimen/dp_4"
+                            android:text="@string/timezone"
+                            app:layout_constraintLeft_toRightOf="@id/ivCountryTimeZone"
+                            app:layout_constraintTop_toBottomOf="@id/tvCountryTimeZone" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

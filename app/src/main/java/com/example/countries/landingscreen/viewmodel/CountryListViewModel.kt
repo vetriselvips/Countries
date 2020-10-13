@@ -19,6 +19,11 @@ class CountryListViewModel(application: Application) : AndroidViewModel(applicat
 
     private val countryListRepo = CountryListRepo()
 
+    init {
+        apiReqForFetchCountries()
+    }
+
+
     fun apiReqForFetchCountries() {
         viewModelScope.launch {
             countryListRepo.getCountryList(countryResp)
@@ -26,7 +31,6 @@ class CountryListViewModel(application: Application) : AndroidViewModel(applicat
     }
 
     fun getCountryList(): LiveData<Resource<ArrayList<CountryDetailsResp>>> {
-        apiReqForFetchCountries()
         return countryResp
     }
 

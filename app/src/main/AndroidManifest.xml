@@ -15,14 +15,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name="com.example.countries.countrydetail.activity.CountryDetailActivity"
-            android:configChanges="orientation|screenSize"></activity>
-        <activity
-            android:name="com.example.countries.landingscreen.activity.CountryListActivity"
-            android:configChanges="orientation|screenSize" />
-        <activity
-            android:name="com.example.countries.onboarding.activity.SplashActivity"
-            android:screenOrientation="portrait"
+            android:name="com.example.countries.landingscreen.activity.LandingActivity"
+            android:configChanges="orientation|screenSize"
             android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

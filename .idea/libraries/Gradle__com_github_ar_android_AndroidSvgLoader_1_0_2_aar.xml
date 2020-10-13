@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.ar-android:AndroidSvgLoader:1.0.2@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/622b55e9c57aed2958dd77ea2dafa6b8/jetified-AndroidSvgLoader-1.0.2/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/622b55e9c57aed2958dd77ea2dafa6b8/jetified-AndroidSvgLoader-1.0.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/622b55e9c57aed2958dd77ea2dafa6b8/jetified-AndroidSvgLoader-1.0.2/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ar-android/AndroidSvgLoader/1.0.2/e17ed4f27a40af2f6cbb59667233d3527ba89caa/AndroidSvgLoader-1.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
