@@ -1,6 +1,7 @@
 package com.example.countries.landingscreen.viewmodel
 
 import android.app.Application
+import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -18,10 +19,8 @@ class CountryListViewModel(application: Application) : AndroidViewModel(applicat
     private val weatherResp = MutableLiveData<Resource<WeatherResp>>()
 
     private val countryListRepo = CountryListRepo()
-
-    init {
-        apiReqForFetchCountries()
-    }
+    private val context: Context = application
+    var dataFromDbResp = MutableLiveData<ArrayList<CountryDetailsResp>>()
 
 
     fun apiReqForFetchCountries() {
@@ -32,6 +31,26 @@ class CountryListViewModel(application: Application) : AndroidViewModel(applicat
 
     fun getCountryList(): LiveData<Resource<ArrayList<CountryDetailsResp>>> {
         return countryResp
+    }
+
+    fun insertIntoDb(resp: ArrayList<CountryDetailsResp>) {
+        viewModelScope.launch {
+            countryListRepo.insertIntoDb(resp, context)
+        }
+    }
+
+    fun fetchAllCountry() {
+        viewModelScope.launch {
+            dataFromDbResp.value?.clear()
+            dataFromDbResp.value =
+                countryListRepo.getAllDataFromDb(context)
+        }
+
+    }
+
+    fun getAllCountry(): LiveData<ArrayList<CountryDetailsResp>>{
+        fetchAllCountry()
+        return dataFromDbResp
     }
 
     fun apiReqForFetchWeather(

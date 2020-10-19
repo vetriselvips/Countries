@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ahmadrosid.svgloader.SvgLoader
 import com.example.countries.R
+import com.example.countries.databinding.ItemCountrylistBinding
 import com.example.countries.landingscreen.listener.CountryItemClickListener
 import com.example.countries.landingscreen.model.country.CountryDetailsResp
 import kotlinx.android.synthetic.main.item_countrylist.view.*
@@ -28,13 +30,9 @@ class CountryListAdapter(
         viewType: Int
     ): CountryListAdapter.CountryListViewHolder {
 
-        return CountryListViewHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.item_countrylist,
-                parent,
-                false
-            )
-        )
+        var inflater = LayoutInflater.from(parent.context)
+        var binding : ItemCountrylistBinding = DataBindingUtil.inflate(inflater,R.layout.item_countrylist,parent,false)
+        return CountryListViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
@@ -47,17 +45,11 @@ class CountryListAdapter(
         holder.bind(eachItem)
     }
 
-    inner class CountryListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(model: CountryDetailsResp) = with(itemView) {
-            itemView.tvCountryName.text = model.name
-            SvgLoader.pluck()
-                .with(context as Activity?)
-                .setPlaceHolder(
-                    R.drawable.ic_no_image_placeholder,
-                    R.drawable.ic_no_image_placeholder
-                )
-                .load(model.flag, itemView.ivFlag)
+    inner class CountryListViewHolder(val binding: ItemCountrylistBinding) : RecyclerView.ViewHolder(binding.root) {
 
+        fun bind(model: CountryDetailsResp) = with(itemView) {
+            binding.countries = model
+            binding.executePendingBindings()
             itemView.setOnClickListener {
                 countryItemClick.onCountryClickListener(model)
             }

@@ -1,6 +1,8 @@
 package com.example.countries.landingscreen.repository
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
+import com.example.countries.db.db.CountryRoomDb
 import com.example.countries.extensions.setError
 import com.example.countries.extensions.setLoading
 import com.example.countries.extensions.setSuccess
@@ -20,7 +22,8 @@ class CountryListRepo {
         val apiInterface: ApiInterface = ApiClient.getClient().create(ApiInterface::class.java)
         countryResp.setLoading()
         val apiResp: Call<ArrayList<CountryDetailsResp>> = apiInterface.getCountryList()
-        apiResp.enqueue(object : Callback<ArrayList<CountryDetailsResp>> {
+
+        val apiReqst = object : Callback<ArrayList<CountryDetailsResp>> {
             override fun onFailure(call: Call<ArrayList<CountryDetailsResp>>, t: Throwable) {
                 countryResp.setError(AppConstants.NETWORK_CALL_FAILED)
             }
@@ -35,7 +38,8 @@ class CountryListRepo {
                     countryResp.setError(AppConstants.NETWORK_CALL_FAILED)
                 }
             }
-        })
+        }
+        apiResp.enqueue(apiReqst)
     }
 
     fun getWeatherDetails(
@@ -63,6 +67,22 @@ class CountryListRepo {
                 }
             }
         })
+    }
+
+    suspend fun insertIntoDb(
+        resp: ArrayList<CountryDetailsResp>,
+        context: Context
+    ) {
+        resp.forEach {
+            CountryRoomDb.getDatabase(context).countryDao().insert(it)
+        }
+    }
+
+    suspend fun getAllDataFromDb(
+        context: Context
+    ): ArrayList<CountryDetailsResp> {
+        return CountryRoomDb.getDatabase(context).countryDao()
+            .getAllCountry() as ArrayList<CountryDetailsResp>
     }
 
 }

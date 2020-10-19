@@ -63,6 +63,7 @@ class CountryListFragment : Fragment(), View.OnClickListener {
     private lateinit var mtoolbar: Toolbar
     private var navController: NavController? = null
     private lateinit var fragView: View
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -87,15 +88,33 @@ class CountryListFragment : Fragment(), View.OnClickListener {
 
     private fun InitializeViewModel() {
         countryListViewModel = ViewModelProvider(this).get(CountryListViewModel::class.java)
+        observeFetchDbData()
+    }
+
+    private fun observeFetchDbData() {
+        countryListViewModel.getAllCountry().observe(requireActivity(), Observer {
+            it.let { it1 ->
+                checkDataAvailabilityFromDb(it1)
+            }
+        })
+    }
+
+    private fun checkDataAvailabilityFromDb(data: ArrayList<CountryDetailsResp>) {
         if (NetworkUtils.isNetworkAvailable(mcontext)) {
             fragView.tvNoItemFound.text = getString(R.string.no_item_found)
-            callCountryApi()
-        } else {
+            if (data.size <= 0) {
+                callCountryApi()
+            } else {
+                updateList(data)
+            }
+        } else if (data.size <= 0) {
             fragView.rvCountryList.visibility = View.GONE
             fragView.tvNoItemFound.visibility = View.VISIBLE
             fragView.tvNoItemFound.text = getString(R.string.no_internet)
+        } else {
+            fragView.tvNoItemFound.text = getString(R.string.no_item_found)
+            updateList(data)
         }
-
     }
 
     private fun InitializeView() {
@@ -105,7 +124,6 @@ class CountryListFragment : Fragment(), View.OnClickListener {
         (activity as LandingActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
         (activity as LandingActivity).supportActionBar?.title =
             getString(R.string.all_countries)
-
         val layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         fragView.rvCountryList.layoutManager = layoutManager
@@ -113,6 +131,7 @@ class CountryListFragment : Fragment(), View.OnClickListener {
         countryListAdapter =
             CountryListAdapter(countryList, countryItemClick)
         fragView.rvCountryList.adapter = countryListAdapter
+
     }
 
     override fun onStart() {
@@ -144,8 +163,8 @@ class CountryListFragment : Fragment(), View.OnClickListener {
                         if (fragView.tvNoItemFound.text.equals(getString(R.string.no_internet))) {
                             countryListViewModel.apiReqForFetchCountries()
                             callCountryApi()
-                            getLocationDetails()
                         }
+                        getLocationDetails()
                     }
                 }
             }
@@ -176,34 +195,43 @@ class CountryListFragment : Fragment(), View.OnClickListener {
 
     //region CountryList
     private fun callCountryApi() {
-        countryListViewModel.getCountryList().observe(requireActivity(), Observer {
-            when (it.state) {
-                ResourceState.LOADING -> {
-                    fragView.pbCountryList.visibility = View.VISIBLE
-                }
-                ResourceState.SUCCESS -> {
-                    fragView.pbCountryList.visibility = View.GONE
-                    it.data?.let { resp ->
-                        updateList(resp)
+        if (countryList.size <= 0) {
+            countryListViewModel.apiReqForFetchCountries()
+            countryListViewModel.getCountryList().observe(requireActivity(), Observer {
+                when (it.state) {
+                    ResourceState.LOADING -> {
+                        fragView.pbCountryList.visibility = View.VISIBLE
+                    }
+                    ResourceState.SUCCESS -> {
+                        fragView.pbCountryList.visibility = View.GONE
+                        it.data?.let { resp ->
+                            if (countryList.size > 0) {
+                                countryListViewModel.insertIntoDb(resp)
+                            }
+                            updateList(resp)
+
+                        }
+                    }
+                    ResourceState.ERROR -> {
+                        fragView.pbCountryList.visibility = View.GONE
+                        it.message?.let { it1 -> showToast(it1) }
+                        fragView.rvCountryList.visibility = View.GONE
+                        fragView.tvNoItemFound.visibility = View.VISIBLE
                     }
                 }
-                ResourceState.ERROR -> {
-                    fragView.pbCountryList.visibility = View.GONE
-                    it.message?.let { it1 -> showToast(it1) }
-                    fragView.rvCountryList.visibility = View.GONE
-                    fragView.tvNoItemFound.visibility = View.VISIBLE
-                }
-            }
-        })
+            })
+        } else {
+            updateList(countryList)
+        }
     }
 
     private fun showToast(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
 
-    private fun updateList(countryDetail: ArrayList<CountryDetailsResp>) {
+    private fun updateList(countryDetail: List<CountryDetailsResp>) {
+        fragView.tvNoItemFound.text = getString(R.string.no_item_found)
         if (countryDetail.size < 0) {
-
             fragView.rvCountryList.visibility = View.GONE
             fragView.tvNoItemFound.visibility = View.VISIBLE
         } else {
@@ -381,8 +409,6 @@ class CountryListFragment : Fragment(), View.OnClickListener {
             }
         } catch (e: java.lang.Exception) {
         }
-
-
     }
 
 
